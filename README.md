@@ -22,8 +22,8 @@ The Python tool created in this project:
 
 ## 👥 Team Members  
 
-| Name | Role | Main Tasks |
-|------|------|------------|
+| Name | 
+|------|
 | **Yasar Thajudeen** 
 | **Luthfi Juneeda Shaj** 
 | **Sethulakshmi Kochuchirayil Babu** 
