@@ -1,0 +1,77 @@
+[
+  {
+    "collection": "Product",
+    "properties": {
+      "IDP": { "type": "integer" },
+      "name": { "type": "string" },
+      "price": {
+        "type": "object",
+        "properties": {
+          "amount": { "type": "number" },
+          "currency": { "type": "string" },
+          "vat_rate": { "type": "number" }
+        }
+      },
+      "brand": { "type": "string" },
+      "description": { "type": "longstring" },
+      "image_url": { "type": "longstring" },
+      "categories": {
+        "type": "array",
+        "items": {
+          "properties": { "title": { "type": "string" } }
+        }
+      },
+      "supplier": {
+        "type": "object",
+        "properties": {
+          "IDS": { "type": "string" },
+          "name": { "type": "string" },
+          "SIRET": { "type": "string" },
+          "headOffice": { "type": "string" },
+          "Revenue": { "type": "integer" }
+        }
+      }
+    }
+  },
+  {
+    "collection": "Stock",
+    "properties": {
+      "IDP": { "type": "integer" },
+      "IDW": { "type": "integer" },
+      "quantity": { "type": "integer" },
+      "location": { "type": "string" }
+    }
+  },
+  {
+    "collection": "Warehouse",
+    "properties": {
+      "IDW": { "type": "integer" },
+      "address": { "type": "string" },
+      "capacity": { "type": "integer" }
+    }
+  },
+  {
+    "collection": "OrderLine",
+    "properties": {
+      "date": { "type": "date" },
+      "quantity": { "type": "integer" },
+      "deliveryDate": { "type": "date" },
+      "comment": { "type": "string" },
+      "grade": { "type": "number" },
+      "IDC": { "type": "integer" },
+      "IDP": { "type": "integer" }
+    }
+  },
+  {
+    "collection": "Client",
+    "properties": {
+      "IDC": { "type": "integer" },
+      "ln": { "type": "string" },
+      "fn": { "type": "string" },
+      "address": { "type": "string" },
+      "nationality": { "type": "string" },
+      "birthDate": { "type": "date" },
+      "email": { "type": "string" }
+    }
+  }
+]

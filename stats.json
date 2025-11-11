@@ -1,0 +1,21 @@
+{
+  "cardinality": {
+    "Product": 100000,
+    "Stock": 20000000,
+    "Warehouse": 200,
+    
+    "OrderLine": 4100000000,
+    "Client": 10000000
+  },
+  "distinct": {
+    "Product": { "IDP": 100000, "brand": 5000 },
+    "Stock": { "IDP": 100000, "IDW": 200 },
+    "OrderLine": { "IDC": 10000000, "IDP": 100000 },
+    "Client": { "IDC": 10000000 }
+  },
+  "avg": {
+    "Product": { "categories": 2, "orderlines": 41000 },
+    "Stock": { "stock": 1 },
+    "Client": { "orders": 100 }
+  }
+}
