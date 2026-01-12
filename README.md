@@ -99,4 +99,4 @@ After running filter, join, and aggregate queries on all 5 models:
 
 **Winner: DB1**
 
-Reason: Lowest overall cost, balanced data distribution across 1,000 servers, no extreme denormalization, full business functionality preserved.
+**Reason**: Lowest overall cost, balanced data distribution across 1,000 servers, no extreme denormalization, full business functionality preserved.
