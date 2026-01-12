@@ -1,104 +1,87 @@
 # BigDataStructure-DIA1-Group-E
-# Big Data Infrastructure and Cloud  
-## 🧮 TD1 – NoSQL Data Model Simulation  
 
-This project simulates the **storage size** and **data distribution (sharding)** of different NoSQL database models.  
-It is part of the *Big Data Infrastructure and Cloud* course.  
+**Big Data Infrastructure and Cloud – ESILV A5**  
 
----
+## 🎯 Project Overview
 
-## 🎯 Project Description  
+This project implements a **NoSQL database simulator** to study the impact of **data model denormalization** on:
+- Storage size (GB/TB/PB)
+- Sharding efficiency (over 1,000 servers)
+- Query performance & costs (time, carbon footprint, monetary price)
 
-The goal of this team project is to explore how **data organization in NoSQL databases** impacts storage space and data distribution across servers.  
-The Python tool created in this project:  
-1. Loads multiple **JSON schemas** representing database designs.  
-2. Uses provided **statistics** (number of clients, orders, products, etc.).  
-3. Computes:  
-   - Estimated document and collection sizes  
-   - Total database storage in GB/TB/PB  
-4. Simulates **sharding** across servers to evaluate data distribution efficiency.  
+We simulate **5 different denormalized designs** (DB1 to DB5) for an online store with:
+- 10 million clients
+- 100,000 products
+- 4.1 billion order lines
+- Average 41,000 order lines per product
 
----
+The simulator is built in Python and fully automates size calculation, sharding simulation, filter/join/aggregate queries, and final model selection.
 
-## 👥 Team Members  
+**Final conclusion (Chapter 5)**:  
+**DB1** is the best model — lowest total cost, balanced sharding, realistic scalability, no extreme duplication.  
+DB4 and DB5 are impractical due to massive storage explosion.
 
-| Name | 
-|------|
-| **Yasar Thajudeen** 
-| **Luthfi Juneeda Shaj** 
-| **Sethulakshmi Kochuchirayil Babu** 
-| **Man Vijaybai Patel** 
+## 👥 Team Members
 
----
+| Name                              | Role / Contribution                     |
+|-----------------------------------|-----------------------------------------|
+| Yasar Thajudeen                   | JSON Schema design & testing            |
+| Luthfi Juneeda Shaj               | Size computation & sharding logic       |
+| Sethulakshmi Kochuchirayil Babu   | Query simulation & cost estimation      |
+| Man Vijaybai Patel                | Integration, testing & documentation    |
 
-## 🧩 Key Statistics Used  
+## 📊 Key Statistics
 
-| Entity | Count | Notes |
-|---------|--------|--------|
-| Clients | 10 million | Each makes 100 orders |
-| Products | 100,000 | 5,000 brands, 2 categories avg |
-| Order Lines | 4.1 billion | Balanced over 365 days |
-| Warehouses | 200 |  |
-| Stock | 20 million | Even for 0 quantity |
+| Entity        | Count          | Notes                                      |
+|---------------|----------------|--------------------------------------------|
+| Clients       | 10,000,000     | Each makes ~100 orders                     |
+| Products      | 100,000        | 5,000 brands, avg 2 categories             |
+| Order Lines   | 4,100,000,000  | Avg 41,000 lines per product               |
+| Warehouses    | 200            |                                            |
+| Stock entries | 20,000,000     | Even distribution across warehouses        |
 
-Each product links to about **41,000 order lines** on average — a major issue for denormalized designs!
+## 📏 Field Size Assumptions 
 
----
+| Type          | Size (bytes) | Overhead per field |
+|---------------|--------------|--------------------|
+| Integer/Number| 8            | +12                |
+| String        | 80           | +12                |
+| Date          | 20           | +12                |
+| Long String   | 200          | +12                |
 
-## 🧮 Field Size Assumptions  
+## 🗂️ Project Structure
 
-| Type | Bytes |
-|------|--------|
-| Integer / Number | 8 |
-| String | 80 |
-| Date | 20 |
-| Long String | 200 |
-| Key Overhead | 12 per field |
+```text
+BigDataStructure-DIA1-Group-E/
+├── main.py                 # Core simulator: size calculation & sharding
+├── test.py                 # Runs Chapter 2 analysis + Ch.3 & Ch.4 demos
+├── query_sim.py            # Chapter 3: Filter & Join queries + costs
+├── aggregate_sim.py        # Chapter 4: Aggregate queries + costs
+├── run_final.py            # Chapter 5: Full challenge – all queries on 5 models
+├── README.md               # This file – full project documentation
+├── stats.json              # Real statistics (cardinality, avg, distinct)
+└── schemas/                # 5 denormalized JSON schemas (DB1–DB5)
+    ├── db1.json
+    ├── db2.json
+    ├── db3.json
+    ├── db4.json
+    └── db5.json
+```
 
----
+## 🚀 How to Run
 
-## 🗃️ Database Design Overview  
+1. Prerequisites
+   - Python 3.8+
+   - No external packages needed
 
-| DB Design | Description | Notes |
-|------------|--------------|-------|
-| **DB1** | Product with categories & supplier | Basic merge – best balance |
-| **DB2** | Product with stock array | Adds stock info inside product |
-| **DB3** | Stock with full product inside | High duplication of product data |
-| **DB4** | OrderLine with product inside | Heavy duplication (4.1B times) |
-| **DB5** | Product with order lines array | Each product has ~41k lines (massive size) |
+2. Run Chapter 2 analysis + Ch.3 & Ch.4 demos
 
----
-
-## 🗂️ Project Structure  
-
-```bash
-project/
-│
-├── TD_1/
-│   ├── main.py             # Main simulator code
-│   ├── test.py             # Tests all 5 DBs and compares results
-│   ├── stats.json          # Statistical data used in the simulation
-│   ├── schemas/            # JSON schemas for all 5 DB designs
-│   │   ├── db1.json
-│   │   ├── db2.json
-│   │   ├── db3.json
-│   │   ├── db4.json
-│   │   └── db5.json
-│   └── README.md           # Internal documentation for TD1
-└── README.md               # Root-level README (this file)
-
-🚀 How to Run the Project
-1️⃣ Prerequisites
-
-Ensure you have Python 3.10+ installed on your system.
-
-2️⃣ Run the Simulation
-
-Open a terminal inside the TD_1/ folder and run:
-
+```
 python test.py
+```
 
-🧾 Example Output
-DB1 total: 909 GB – best one!
-DB4: 4.4 TB – too big!
-DB5: 167 PB – impossible!
+3. Run final Chapter 5 challenge (full use case on all models)
+
+```
+python run_final.py
+```
