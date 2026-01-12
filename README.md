@@ -98,4 +98,5 @@ After running filter, join, and aggregate queries on all 5 models:
 | **DB5** | **$32.82** | Product contains ~41,000 OrderLines $\rightarrow$ ~167 PB storage $\rightarrow$ impossible |
 
 **Winner: DB1**
+
 Reason: Lowest overall cost, balanced data distribution across 1,000 servers, no extreme denormalization, full business functionality preserved.
