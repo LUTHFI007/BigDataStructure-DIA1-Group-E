@@ -1,6 +1,5 @@
-# BigDataStructure-DIA1-Group-E
+# Big Data Structure - DIA1(Group-E)
 
-**Big Data Infrastructure and Cloud – ESILV A5**  
 
 ## 🎯 Project Overview
 
@@ -85,3 +84,18 @@ python test.py
 ```
 python run_final.py
 ```
+
+## 📈 Final Results
+
+After running filter, join, and aggregate queries on all 5 models:
+
+| Model | Total Estimated Cost | Notes / Recommendation |
+| :--- | :--- | :--- |
+| **DB1** | **$32.82** | **Best model** – lowest cost, balanced sharding, minimal duplication, realistic |
+| **DB2** | **$32.82** | Slightly better size than DB1 but deletes Stock collection $\rightarrow$ not viable |
+| **DB3** | **$32.82** | Moderate duplication (Stock contains Product) |
+| **DB4** | **$32.82** | OrderLine contains Product $\rightarrow$ 4.4 TB storage $\rightarrow$ impractical |
+| **DB5** | **$32.82** | Product contains ~41,000 OrderLines $\rightarrow$ ~167 PB storage $\rightarrow$ impossible |
+
+**Winner: DB1**
+Reason: Lowest overall cost, balanced data distribution across 1,000 servers, no extreme denormalization, full business functionality preserved.
