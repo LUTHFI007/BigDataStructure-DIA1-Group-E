@@ -44,9 +44,7 @@
           "image_url": { "type": "longstring" },
           "categories": {
             "type": "array",
-            "items": {
-              "properties": { "title": { "type": "string" } }
-            }
+            "items": { "title": { "type": "string" } }
           },
           "supplier": {
             "type": "object",
