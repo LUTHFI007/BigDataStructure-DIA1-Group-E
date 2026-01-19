@@ -1,6 +1,6 @@
 # query_sim.py
-# Chapter 3 - Filter and Join Queries + Cost Estimation
-# This file adds the 4 required operators for Homework 3.3 (page 8)
+# Filter and Join Queries + Cost Estimation
+# This file adds the 4 required operators 
 
 class QuerySimulator:
     def __init__(self, nosql_simulator):
@@ -104,3 +104,4 @@ class QuerySimulator:
             "carbon_grams": round(carbon_grams, 2),
             "price_usd": round(price_usd, 6)
         }
+    

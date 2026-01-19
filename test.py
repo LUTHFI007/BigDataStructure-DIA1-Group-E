@@ -7,7 +7,7 @@ import os
 print("=== BIG DATA STRUCTURE PROJECT  ===")
 
 
-# Folder where your 5 db*.json files are stored
+# Folder where the 5 db*.json files are stored
 schemas_folder = "schemas"
 
 # Find all db*.json files
@@ -21,10 +21,10 @@ if not db_files:
 
 print(f"Found {len(db_files)} models: {', '.join(sorted(db_files))}\n")
 
-# Store results for Chapter 2 summary table
+# Store results for summary table
 results = {}
 
-# === CHAPTER 2: SIZE & SHARDING ANALYSIS ===
+# === SIZE & SHARDING ANALYSIS ===
 for db_file in sorted(db_files):
     full_path = os.path.join(schemas_folder, db_file)
     db_name = db_file.replace('.json', '').upper()
@@ -49,7 +49,7 @@ for db_file in sorted(db_files):
 
 # Chapter 2 Summary Table
 print("\n" + "="*80)
-print("              DB COMPARISON SUMMARY - CHAPTER 2              ")
+print("              DB COMPARISON SUMMARY              ")
 print("="*80)
 print(f"{'DB':<8} {'Total Size (GB)':<18} {'Notes / Recommendation'}")
 print("-"*90)
@@ -70,14 +70,14 @@ for db, size in sorted(results.items()):
     print(f"{db:<8} {size:<18.2f} {notes}")
 
 print("\n" + "="*90)
-print("FINAL RECOMMENDATION (Chapter 2):")
+print("FINAL RECOMMENDATION:")
 print("→ DB1 is the most balanced, scalable, and realistic model.")
 print("→ DB4 and DB5 show extreme denormalization causes storage explosion.")
 print("="*90)
 
-# === CHAPTER 3 DEMO – FILTER & JOIN SIMULATION (using DB1 as example) ===
+# === FILTER & JOIN SIMULATION (using DB1 as example) ===
 print("\n" + "="*80)
-print("CHAPTER 3 DEMO: FILTER & JOIN QUERIES + COSTS (using DB1)")
+print("FILTER & JOIN QUERIES + COSTS (using DB1)")
 print("="*80)
 
 qs = QuerySimulator(sim)
@@ -94,9 +94,9 @@ print(qs.join_with_sharding("OrderLine", "Product", "IDP"))
 print("\n4. Join OrderLine + Product (without sharding - very slow):")
 print(qs.join_without_sharding("OrderLine", "Product"))
 
-# === CHAPTER 4 DEMO – AGGREGATE QUERY SIMULATION (using DB1) ===
+# === AGGREGATE QUERY SIMULATION (using DB1) ===
 print("\n" + "="*80)
-print("CHAPTER 4 DEMO: AGGREGATE QUERIES + COSTS (using DB1)")
+print("AGGREGATE QUERIES + COSTS (using DB1)")
 print("="*80)
 
 aggs = AggregateSimulator(sim)
@@ -109,3 +109,4 @@ print(aggs.simulate_aggregate("OrderLine"))
 
 print("\n" + "="*80)
 print("="*80)
+

@@ -1,5 +1,5 @@
 # run_final.py
-# Chapter 5 – The Data Model Selection’s Challenge 
+# The Data Model Selection’s Challenge 
 # Runs ALL queries on ALL 5 models and chooses the best one
 
 from main import NoSQLSimulator
@@ -7,7 +7,6 @@ from query_sim import QuerySimulator
 from aggregate_sim import AggregateSimulator
 import os
 
-print("===  CHAPTER 5 ===")
 print("Running complete use case simulation on all 5 models...\n")
 
 schemas_folder = "schemas"

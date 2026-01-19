@@ -39,7 +39,7 @@ class NoSQLSimulator:
         return 80  # default fallback
 
     def compute_doc_size(self, collection: str) -> int:
-        """Calculate size of one document in bytes (core function from Chapter 2)"""
+        """Calculate size of one document in bytes """
         schema = self.get_collection_schema(collection)
         if not schema:
             return 0
@@ -51,7 +51,7 @@ class NoSQLSimulator:
             if not ftype:
                 continue
                 
-            # Every field has 12B key overhead (PDF page 5)
+            # Every field has 12B key overhead 
             size += 12
 
             if ftype in ["integer", "number", "string", "date", "longstring"]:
@@ -137,7 +137,7 @@ class NoSQLSimulator:
         
         return total_gb
     
-        # ──────────────── CHAPTER 3: FILTER & JOIN SIMULATION ────────────────
+        # ──────────────── FILTER & JOIN SIMULATION ────────────────
 
     def filter_with_sharding(self, collection, shard_key):
         """Fast filter – uses sharding key → only 1 server scanned"""

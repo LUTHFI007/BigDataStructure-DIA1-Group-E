@@ -1,5 +1,5 @@
 # aggregate_sim.py
-# Chapter 4 – Aggregate Queries + Costs (Homework page 10)
+# Aggregate Queries + Costs 
 
 class AggregateSimulator:
     def __init__(self, nosql_simulator):
